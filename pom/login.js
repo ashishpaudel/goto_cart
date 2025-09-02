@@ -2,7 +2,7 @@ import{test, expect} from '@playwright/test'
 export class login {
         constructor(page){
             this.page = page
-            this.clickLoginBtn = this.page.locator('#anonLogin').click();
+            this.clickLoginBtn = this.page.locator('#anonLogin');
             this.usernameInput = this.page.locator('input[placeholder="Please enter your Phone or Email"]')
             this.passwordInput = this.page.locator('input[placeholder="Please enter your password"]')
             this.loginBtn = this.page.locator('div.iweb-button-mask')
@@ -14,7 +14,8 @@ export class login {
 
     
         async login_page(username , password) {
-            await this.clickLoginBtn
+            await this.clickLoginBtn.click()
+            await this.page.waitForTimeout(1000)
             await this.usernameInput.fill(username)
             await this.passwordInput.type(password, {delay: 100})
             // await  this.page.waitForTimeout(1000)
