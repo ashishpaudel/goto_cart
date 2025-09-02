@@ -43,6 +43,7 @@ async addToCart(productName) {
      }
     // await this.addToCartBtn.first().waitFor({ state: 'visible', timeout: 15000 })
     await this.addToCartBtn.click() |
+    await this.page.waitForTimeout(3000)
     await expect(this.page.locator('.cart-message-text')).toHaveText("Added to cart successfully!")      
  //hello worlds
 }
